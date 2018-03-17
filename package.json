@@ -1,0 +1,23 @@
+{
+  "name": "rcc-redis-adapter",
+  "version": "1.0.0",
+  "description": "Wraps and adapts the 'redis' module & its RedisClient instances to be used with the 'redis-client-cache' module",
+  "author": "Byron du Preez",
+  "license": "Apache-2.0",
+  "main": "rcc-redis-adapter.js",
+  "engines": {
+    "node": ">=6.10.3"
+  },
+  "scripts": {
+    "test": "tape ./test/*.test.js"
+  },
+  "dependencies": {
+    "core-functions": "3.0.22",
+    "redis": "2.8.0",
+    "rcc-core": "1.0.1"
+  },
+  "devDependencies": {
+    "tape": "^4.9.0"
+  },
+  "repository": "https://github.com/byron-dupreez/rcc-redis-adapter"
+}
