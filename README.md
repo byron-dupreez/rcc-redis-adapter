@@ -15,7 +15,7 @@ $ npm i --save rcc-redis-adapter
 
 ## Usage
 
-* To use the `rcc-core` module
+* To use the `rcc-redis-adapter` module
 ```js
 // Get the redis adapter
 const redis = require('rcc-redis-adapter');

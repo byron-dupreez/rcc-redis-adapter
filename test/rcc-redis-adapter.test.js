@@ -27,7 +27,7 @@ function addEventListeners(redisClient, desc, customOnError) {
   };
 
   const onError = err => {
-    console.log(`*** Redis client ${desc} connection to host (${host}) & port (${port}) hit error ${err}`);
+    console.log(`*** Redis client ${desc} connection to host (${host}) & port (${port}) hit ERROR ${err}`);
     if (customOnError) {
       return customOnError(err);
     }
@@ -36,7 +36,7 @@ function addEventListeners(redisClient, desc, customOnError) {
   };
 
   const onClientError = err => {
-    console.log(`*** Redis client ${desc} connection to host (${host}) & port (${port}) hit client error ${err}`);
+    console.log(`*** Redis client ${desc} connection to host (${host}) & port (${port}) hit CLIENT ERROR ${err}`);
     console.error(err);
   };
 
