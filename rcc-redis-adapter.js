@@ -2,13 +2,16 @@
 
 const isInstanceOf = require('core-functions/objects').isInstanceOf;
 
-const rccAdapters = require('rcc-core');
+const rccCore = require('rcc-core');
 
 const redis = require('redis');
 const ReplyError = redis.ReplyError;
 
-const DEFAULT_REDIS_HOST = rccAdapters.DEFAULT_REDIS_HOST;
-const DEFAULT_REDIS_PORT = rccAdapters.DEFAULT_REDIS_PORT;
+const DEFAULT_REDIS_HOST = '127.0.0.1';
+const DEFAULT_REDIS_PORT = rccCore.DEFAULT_REDIS_PORT;
+
+exports.getDefaultHost = () => DEFAULT_REDIS_HOST;
+exports.getDefaultPort = () => DEFAULT_REDIS_PORT;
 
 exports.createClient = createClient;
 
@@ -71,13 +74,14 @@ function adaptClient(client) {
   }
 
   if (!client.addEventListeners) {
-    client.addEventListeners = function (onConnect, onReady, onReconnecting, onError, onClientError, onEnd) {
+    client.addEventListeners = function (onConnect, onReady, onReconnecting, onError, onClientError, onEnd, onClose) {
       if (typeof onConnect === 'function') this.on('connect', onConnect);
       if (typeof onReady === 'function') this.on('ready', onReady);
       if (typeof onReconnecting === 'function') this.on('reconnecting', onReconnecting);
       if (typeof onError === 'function') this.on('error', onError);
       if (typeof onClientError === 'function') this.on('clientError', onClientError);
       if (typeof onEnd === 'function') this.on('end', onEnd);
+      if (typeof onClose === 'function') this.on('close', onClose);
     }
   }
 
@@ -128,7 +132,7 @@ function resolveHostAndPortFromMovedError(movedError) {
   if (isMovedError(movedError)) {
     return movedError.message.substring(movedError.message.lastIndexOf(' ') + 1).split(':');
   }
-  throw new Error(`Unexpected RedisClient "moved" ReplyError - ${movedError}`);
+  throw new Error(`Unexpected redis client "moved" ReplyError - ${movedError}`);
 }
 
 // /**
