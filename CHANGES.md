@@ -1,5 +1,10 @@
 ## Changes
 
+### 1.0.2
+- Added `.npmignore`
+- Renamed `release_notes.md` to `CHANGES.md`
+- Updated dependencies
+
 ### 1.0.1
 - Updated rcc-core dependency
 
