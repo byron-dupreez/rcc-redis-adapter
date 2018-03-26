@@ -1,7 +1,8 @@
 ## Changes
 
-### 1.0.4
+### 1.0.7
 - Added unit tests to verify `ping` function works as expected
+- Moved all adaptation of the RedisClient prototype to happen at module load time in order to fix sequencing bugs
 
 ### 1.0.3
 - Replaced `getDefaultHost` function with `defaultHost` property
