@@ -134,7 +134,7 @@ function getAdapter() {
  * @returns {RedisClientOptions} the options used
  */
 function getOptions() {
-  return this._options;
+  return this.options;
 }
 
 /**
