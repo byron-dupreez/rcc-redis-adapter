@@ -1,5 +1,8 @@
 ## Changes
 
+### 1.0.9
+- Updated rcc-core dependency
+
 ### 1.0.8
 - Fixed defect in `getOptions` function
 
